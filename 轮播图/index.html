@@ -105,12 +105,29 @@
         }
 
         var goNext = function(){
-            index ++;
+            if(index < 4){
+                index ++;
+            } else{
+                index = 0;
+            }
+            
+            goIndex();
+        }
+        var goPre = function(){
+            if(index == 0){
+                index = 4;
+                
+            } else{
+                index --;
+            }
             goIndex();
         }
 
         goNextBtn.addEventListener('click',function(){
             goNext();
+        })
+        goPreBtn.addEventListener('click',function(){
+            goPre();
         })
 
 
