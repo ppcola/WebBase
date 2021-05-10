@@ -107,11 +107,11 @@
 
         </ul>
         <ul class="pointList">
-            <li class="point active"></li>
-            <li class="point"></li>
-            <li class="point"></li>
-            <li class="point"></li>
-            <li class="point"></li>
+            <li class="point active" data-index='0'></li>
+            <li class="point" data-index='1'></li>
+            <li class="point" data-index='2'></li>
+            <li class="point" data-index='3'></li>
+            <li class="point" data-index='4'></li>
         </ul>
         <button type="button" class="btn" id="goPre"><</button>
                 <button type="button" class="btn" id="goNext">></button>
@@ -167,6 +167,15 @@
         goPreBtn.addEventListener('click',function(){
             goPre();
         })
+
+        for(var i = 0 ; i < points.length ; i++){
+            points[i].addEventListener('click',function(){
+                var pointIndex = this.getAttribute('data-index');
+                console.log(pointIndex)
+                index = pointIndex;
+                goIndex();
+            })
+        }
 
 
 
