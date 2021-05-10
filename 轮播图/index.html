@@ -70,6 +70,28 @@
             opacity: 1;
             z-index: 10;
         }
+        .pointList{
+            padding-left: 0px;
+            list-style: none;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+        }
+        .point{
+            width: 10px;
+            height: 10px;
+            background-color: rgba(0,0,0,0.4);
+            border-radius: 100%;
+            float: left;
+            margin-right: 16px;
+            border: solid 2px rgba(255,255,255,0.6);
+
+            cursor: pointer;
+        }
+        .point.active{
+            background-color: rgba(255, 255, 255, 0.5);
+        }
     </style>
 
 </head>
@@ -84,6 +106,13 @@
             <li class="item">4</li>
 
         </ul>
+        <ul class="pointList">
+            <li class="point active"></li>
+            <li class="point"></li>
+            <li class="point"></li>
+            <li class="point"></li>
+            <li class="point"></li>
+        </ul>
         <button type="button" class="btn" id="goPre"><</button>
                 <button type="button" class="btn" id="goNext">></button>
 
@@ -92,19 +121,25 @@
         var items = document.getElementsByClassName('item');
         var goPreBtn = document.getElementById('goPre');
         var goNextBtn = document.getElementById('goNext');
+        var points = document.getElementsByClassName('point');
+
 
         var index = 0; //index on behalf of pic
 
         var clearActive = function () {
             for (var i = 0; i < items.length; i++) {
                 items[i].className = 'item';
-            }   
+            } 
+            for(var i = 0; i < points.length; i++)  {
+                points[i].className = 'point';
+            }
         }
 
         var goIndex = function () {
             clearActive();
             console.log(index)
             items[index].className = 'item active';
+            points[index].className = 'point active';
         }
 
         var goNext = function(){
@@ -132,6 +167,7 @@
         goPreBtn.addEventListener('click',function(){
             goPre();
         })
+
 
 
     </script>
